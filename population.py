@@ -137,6 +137,15 @@ Population : Noteur=\"{}\"\n\
             self._sommesNotes -= indi.note
             self._pop.remove(indi)
 
+    def statAlleles(self):
+        alleles = [0] * 10
+
+        for i in self._pop:
+            for a in i.patrimoine:
+                alleles[a] += 1
+
+        return [int(alleles[i]) for i in range(1, 10)] + [len(self._pop) * len(self._pop[1].patrimoine)]
+
     @property
     def solutions(self):
         return self._sol
